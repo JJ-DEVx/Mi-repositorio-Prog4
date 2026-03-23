@@ -55,7 +55,6 @@ VALUES
     ('Goblin', 'Criatura', 3),
     ('Reanimado', 'No-muerto', 5);
 
--- RELACIÓN HÉROES - MISIONES (MUCHOS A MUCHOS)
 INSERT INTO misiones_heroes (id_heroe, id_mision)
 VALUES 
     (1,1),
@@ -63,7 +62,6 @@ VALUES
     (2,2),
     (3,2);
 
--- RELACIÓN MISIONES - MONSTRUOS (MUCHOS A MUCHOS)
 INSERT INTO misiones_monstruos (id_mision, id_monstruo)
 VALUES 
     (1,2),
