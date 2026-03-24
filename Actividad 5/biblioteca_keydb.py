@@ -1,12 +1,10 @@
-# -*- coding: utf-8 -*-
 import redis
 import json
 import os
 from dotenv import load_dotenv
 
-# ==============================
+
 # CARGAR VARIABLES DE ENTORNO
-# ==============================
 load_dotenv()  # lee el archivo .env si existe
 
 REDIS_HOST = os.getenv("REDIS_HOST", "localhost")
@@ -20,9 +18,8 @@ except redis.ConnectionError as e:
     print("No se pudo conectar a KeyDB:", e)
     exit(1)
 
-# ==============================
+
 # FUNCIONES CRUD
-# ==============================
 def generar_clave(id_libro):
     return f"libro:{id_libro}"
 
@@ -117,9 +114,8 @@ def buscar_libros():
     except redis.RedisError as e:
         print("Error al buscar libros:", e)
 
-# ==============================
+
 # MENÚ PRINCIPAL
-# ==============================
 def menu():
     while True:
         print("""
