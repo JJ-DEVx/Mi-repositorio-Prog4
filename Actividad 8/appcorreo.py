@@ -12,9 +12,8 @@ r = redis.Redis(host="localhost", port=6379, decode_responses=True)
 def clave(id):
     return f"libro:{id}"
 
-# ==============================
+
 # LISTAR LIBROS
-# ==============================
 @app.route('/')
 def index():
     libros = []
@@ -24,9 +23,8 @@ def index():
             libros.append(libro)
     return render_template("index.html", libros=libros)
 
-# ==============================
+
 # AGREGAR LIBRO
-# ==============================
 @app.route('/agregar', methods=['GET','POST'])
 def agregar():
     if request.method == 'POST':
@@ -51,7 +49,7 @@ def agregar():
 
         r.set(clave(id_libro), json.dumps(libro))
 
-        # 📧 CORREO ASÍNCRONO
+        # CORREO ASÍNCRONO
         enviar_correo.delay(
             "Libro agregado",
             "correo@ejemplo.com",
@@ -63,9 +61,8 @@ def agregar():
 
     return render_template("agregar.html")
 
-# ==============================
+
 # EDITAR LIBRO
-# ==============================
 @app.route('/editar/<int:id>', methods=['GET','POST'])
 def editar(id):
     libro_json = r.get(clave(id))
@@ -88,9 +85,8 @@ def editar(id):
 
     return render_template("editar.html", libro=libro)
 
-# ==============================
+
 # ELIMINAR LIBRO (CON CONFIRMACIÓN)
-# ==============================
 @app.route('/eliminar/<int:id>', methods=['GET','POST'])
 def eliminar(id):
     clave_libro = clave(id)
@@ -104,7 +100,7 @@ def eliminar(id):
 
     if request.method == 'POST':
 
-        # 📧 CORREO ASÍNCRONO
+        # CORREO ASÍNCRONO
         enviar_correo.delay(
             "Libro eliminado",
             "correo@ejemplo.com",
@@ -117,9 +113,8 @@ def eliminar(id):
 
     return render_template("eliminar.html", libro=libro)
 
-# ==============================
+
 # BUSCAR LIBROS
-# ==============================
 @app.route('/buscar', methods=['GET','POST'])
 def buscar():
     resultados = []
@@ -142,8 +137,7 @@ def buscar():
 
     return render_template("buscar.html", libros=resultados)
 
-# ==============================
+
 # INICIAR APP
-# ==============================
 if __name__ == '__main__':
     app.run(debug=True)
