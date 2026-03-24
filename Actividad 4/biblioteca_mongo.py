@@ -2,7 +2,7 @@ from pymongo import MongoClient, errors
 
 
 # CONFIGURACIÓN DE CONEXIÓN
-# Cambia estos datos según si es MongoDB local o Atlas
+# Se cambian estos datos dependiendo si es MongoDB local o Atlas
 MONGO_URI = "mongodb://localhost:27017/"  # para MongoDB local
 # Ejemplo MongoDB Atlas:
 # MONGO_URI = "mongodb+srv://usuario:contrasena@cluster.mongodb.net/test?retryWrites=true&w=majority"
