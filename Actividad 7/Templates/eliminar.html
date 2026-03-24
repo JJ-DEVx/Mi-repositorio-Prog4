@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+
+<h2>¿Eliminar libro?</h2>
+
+<p>{{ libro.titulo }} - {{ libro.autor }}</p>
+
+<form method="post">
+    <button>Confirmar eliminación</button>
+</form>
+
+<a href="/">Cancelar</a>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+
+<h2>Buscar libro</h2>
+
+<form method="post">
+    <input name="valor" placeholder="Buscar">
+    <button>Buscar</button>
+</form>
+
+<ul>
+{% for libro in libros %}
+    <li>{{ libro.titulo }} - {{ libro.autor }}</li>
+{% endfor %}
+</ul>
+
+{% endblock %}
