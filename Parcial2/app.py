@@ -26,16 +26,14 @@ vacunas = [
     {"anio": 2019, "cobertura": 95}
 ]
 
-# ==============================
+
 # GET /vacunas
-# ==============================
 @app.route('/vacunas', methods=['GET'])
 def obtener_todos():
     return jsonify(vacunas), 200
 
-# ==============================
-# GET /vacunas/<anio>
-# ==============================
+
+# GET /vacunas/<años>
 @app.route('/vacunas/<int:anio>', methods=['GET'])
 def obtener_por_anio(anio):
     for v in vacunas:
@@ -43,9 +41,8 @@ def obtener_por_anio(anio):
             return jsonify(v), 200
     return jsonify({"error": "Año no encontrado"}), 404
 
-# ==============================
+
 # GET /vacunas/provincia/<nombre> (simulado)
-# ==============================
 @app.route('/vacunas/provincia/<nombre>', methods=['GET'])
 def por_provincia(nombre):
     # Simulación (porque Banco Mundial no da provincias)
