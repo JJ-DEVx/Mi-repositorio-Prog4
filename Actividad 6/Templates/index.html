@@ -1,0 +1,16 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<h1>Biblioteca</h1>
+
+<a href="/agregar">Agregar libro</a>
+<a href="/buscar">Buscar</a>
+
+<ul>
+{% for libro in libros %}
+<li>
+{{ libro.titulo }} - {{ libro.autor }}
+<a href="/editar/{{ libro.id }}">Editar</a>
+<a href="/eliminar/{{ libro.id }}">Eliminar</a>
+</li>
+{% endfor %}
+</ul>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Buscar Libro</title>
+</head>
+<body>
+
+<h1>Buscar Libro</h1>
+
+<form method="POST">
+    <input type="text" name="valor" placeholder="Buscar...">
+    <button type="submit">Buscar</button>
+</form>
+
+<ul>
+{% for libro in libros %}
+<li>{{ libro.titulo }} - {{ libro.autor }}</li>
+{% endfor %}
+</ul>
+
+<a href="/">Volver</a>
+
+</body>
+</html>
